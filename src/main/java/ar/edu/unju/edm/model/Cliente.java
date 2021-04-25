@@ -146,17 +146,17 @@ public class Cliente {
 		LocalDate fechaAct = LocalDate.now();
 		LocalDateTime hora= LocalDateTime.now();
 		int anio;
-		if(fechaAct.getMonthValue()< this.fechaNacimiento.getMonthValue())
+		if(fechaAct.getMonthValue()< fechaNacimiento.getMonthValue())
 		{
 			anio =fechaAct.getYear();
 		}
 		else {
 			anio =fechaAct.getYear()+1;
 	}
-		LocalDate fechaproxcumple = 	LocalDate.of(anio, this.fechaNacimiento.getMonth(), this.fechaNacimiento.getDayOfMonth()) ;
+		LocalDate fechaproxcumple = 	LocalDate.of(anio, fechaNacimiento.getMonth(), fechaNacimiento.getDayOfMonth()) ;
 		Period periodos = Period.between(fechaAct, fechaproxcumple);
 		
-		LocalDateTime  horaproxcumple = LocalDateTime.of(anio, this.fechaNacimiento.getMonth(), this.fechaNacimiento.getDayOfMonth(), 0, 0,0);
+		LocalDateTime  horaproxcumple = LocalDateTime.of(anio, fechaNacimiento.getMonth(), fechaNacimiento.getDayOfMonth(), 0, 0,0);
 		Duration tiempo =Duration.between(hora, horaproxcumple);
 		
 		return "  THCumpleaños Año: " + periodos.getYears() + " Mes: " + periodos.getMonths() + " Dia: " + periodos.getDays() + "Hr: " + tiempo.toHoursPart()+"	Min: "+tiempo.toMinutesPart()+"Seg: " + tiempo.toSecondsPart()  ;		
